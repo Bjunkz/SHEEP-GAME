@@ -7,11 +7,13 @@
 body {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: lightgreen;
 }
 .box {
-    background: white);
+    background: white;
     border: 1px solid #555;
     display: flex;
     align-items: center;
@@ -21,7 +23,7 @@ body {
 
 .sheep {
     background-image: url(sheep.gif);
-    background-size: ;
+    /* background-size: ; */
     background-repeat: no-repeat;
     background-position: center;
     
