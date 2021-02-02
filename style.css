@@ -2,6 +2,7 @@
     display: grid;
     grid-template-rows: 150px 150px 150px;
     grid-template-columns: 150px 150px 150px;
+    padding-bottom: 50px;
 }
 
 body {
@@ -10,11 +11,10 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: lightgreen;
+    background-color: rgb(252, 251, 251);
 }
 .box {
-    background: white;
-    border: 1px solid #555;
+    /* border: 1px solid #555; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,4 +27,13 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     
+}
+
+#caughtSheep {
+    min-height: 100px;
+    width: 400px;
+    border: 5px dotted brown;
+} 
+img {
+    width: 50px;
 }

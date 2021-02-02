@@ -8,6 +8,8 @@ const startBtn = document.getElementById("startBtn");
 startBtn.addEventListener('click', startGame)
 const description = document.getElementById("description");
 const time = document.getElementById("time");
+const sheep = document.querySelector("#caughtSheep")
+const sheepImg = "<img src='little-sheep.png'>"
 
 let level="2000"
 let timer;
@@ -22,6 +24,9 @@ function startGame() {
     if(sheepCatcher){
         clearInterval(sheepCatcher);
     }
+
+    sheep.innerHTML= ""
+
     let timeLeft = 20; 
     timer = setInterval(function () {
         timeLeft --
@@ -30,23 +35,27 @@ function startGame() {
         if (timeLeft == 0) {
             clearInterval(timer);
             clearInterval(sheepCatcher);
+        
+
         };
         time.innerHTML = "Tid kvar: " + timeLeft;
         console.log(timeLeft);
     }, 1000);
     
-    box.forEach((item, index) => item.classList.remove('sheep'))
-    let number = Math.floor(getRandomArbitrary(1, 9));
-    let div = document.getElementById(number);
-    div.classList.add('sheep');
+    placeSheep()
 
-        sheepCatcher = setInterval(function () {
-        box.forEach((item, index) => item.classList.remove('sheep'))
-        let number = Math.floor(getRandomArbitrary(1, 9))
-        let div = document.getElementById(number)
-        div.classList.add('sheep')
-    }, level)
+        sheepCatcher = setInterval(placeSheep, level)
 };
+
+// PLACERAR ETT FÅR I EN RANDOM BOX 
+function placeSheep(){
+    box.forEach((item, index) => item.classList.remove('sheep'))
+    let number = Math.floor(getRandomArbitrary(1, 9))
+    let div = document.getElementById(number)
+    div.classList.add('sheep')
+};
+
+
 
 //GENERERAR EN SLUPMÄSSIG SIFFRA MELLAN MIN OCH MAX
 function getRandomArbitrary(min, max) {
@@ -61,6 +70,7 @@ gameBoard.addEventListener('click', function (e) {
         currentScore++
         score.innerHTML = "Fångade får: " + currentScore
         e.target.classList.remove('sheep')
+        sheep.insertAdjacentHTML("beforeend", sheepImg)
     };
 
 });
