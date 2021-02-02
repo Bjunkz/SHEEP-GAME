@@ -1,21 +1,29 @@
 // fåret dyker upp på en random plats
-let level="2000"
+
 
 const gameBoard = document.querySelector(".game-board")
 const box = document.querySelectorAll(".box")
 const score = document.querySelector('#score')
-let currentScore = 0;
 const startBtn = document.getElementById("startBtn");
 startBtn.addEventListener('click', startGame)
 const description = document.getElementById("description");
-description.appendChild(startBtn);
 const time = document.getElementById("time");
 
-time.innerHTML = "Time left: 10";
+let level="2000"
+let timer;
+let sheepCatcher;
+let currentScore = 0;
 
+//STARTAR SPELET OCH TIMERN
 function startGame() {
+    if(timer){
+        clearInterval(timer);
+    }
+    if(sheepCatcher){
+        clearInterval(sheepCatcher);
+    }
     let timeLeft = 20; 
-    let timer = setInterval(function () {
+    timer = setInterval(function () {
         timeLeft --
 
         //break timer countdown 10-0
@@ -23,7 +31,7 @@ function startGame() {
             clearInterval(timer);
             clearInterval(sheepCatcher);
         };
-        time.innerHTML = "Time left: " + timeLeft;
+        time.innerHTML = "Tid kvar: " + timeLeft;
         console.log(timeLeft);
     }, 1000);
     
@@ -32,7 +40,7 @@ function startGame() {
     let div = document.getElementById(number);
     div.classList.add('sheep');
 
-    let sheepCatcher = setInterval(function () {
+        sheepCatcher = setInterval(function () {
         box.forEach((item, index) => item.classList.remove('sheep'))
         let number = Math.floor(getRandomArbitrary(1, 9))
         let div = document.getElementById(number)
@@ -40,15 +48,18 @@ function startGame() {
     }, level)
 };
 
+//GENERERAR EN SLUPMÄSSIG SIFFRA MELLAN MIN OCH MAX
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 };
 
+ //RÄKNAR FÅREN NÄR MAN KLICKAR PÅ DOM
 gameBoard.addEventListener('click', function (e) {
-
+    
+    // score.innerHTML = "Poäng: "+ currentScore;
     if (e.target.classList.contains('sheep')) {
         currentScore++
-        score.innerHTML = currentScore
+        score.innerHTML = "Fångade får: " + currentScore
         e.target.classList.remove('sheep')
     };
 
