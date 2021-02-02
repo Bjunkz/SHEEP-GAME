@@ -1,6 +1,3 @@
-// fåret dyker upp på en random plats
-
-
 const gameBoard = document.querySelector(".game-board")
 const box = document.querySelectorAll(".box")
 const score = document.querySelector('#score')
@@ -11,7 +8,7 @@ const time = document.getElementById("time");
 const sheep = document.querySelector("#caughtSheep")
 const sheepImg = "<img src='little-sheep.png'>"
 
-let level="2000"
+let level=2000
 let timer;
 let sheepCatcher;
 let currentScore = 0;
@@ -55,22 +52,24 @@ function placeSheep(){
     div.classList.add('sheep')
 };
 
-
-
 //GENERERAR EN SLUPMÄSSIG SIFFRA MELLAN MIN OCH MAX
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 };
 
- //RÄKNAR FÅREN NÄR MAN KLICKAR PÅ DOM
+ //RÄKNAR FÅREN NÄR MAN KLICKAR PÅ DEM OCH STOPPAR IN FÅREN I HAGEN
 gameBoard.addEventListener('click', function (e) {
     
-    // score.innerHTML = "Poäng: "+ currentScore;
     if (e.target.classList.contains('sheep')) {
-        currentScore++
+        currentScore++;
+        level-=80;
+        // varje gång man träffar ett får går det fortare, funkar dock först när man startar om
+        // clearInterval(sheepCatcher); 
+        // sheepCatcher = setInterval(placeSheep, level); fungerar inte, ta bort?
+        console.log("level: ",level)
         score.innerHTML = "Fångade får: " + currentScore
         e.target.classList.remove('sheep')
-        sheep.insertAdjacentHTML("beforeend", sheepImg)
+        sheep.insertAdjacentHTML("beforeend", sheepImg);
     };
 
 });
