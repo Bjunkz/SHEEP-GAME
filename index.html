@@ -8,12 +8,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Jannes får-loop</h1>
+    <div class="header">
+        <h1>Jannes får-loop</h1>
+        <img src="janne.gif" id="janne">
+    </div>
+
     <div id ="description">Kaos i Jannes grannes får-kollektiv. Hjälp Janne att fånga 10 får. </div>
-    <button id="startBtn">Starta</button>
+    <div class="buttons">
+        <button id="startBtn">Starta</button>
+        <button id="stopBtn">Stop</button>
+    </div>
+
     <div>
         <p id="score">Fångade får: 0</p>
-        <p id="time">Tid kvar: 20</p>
+        <p id="time">Tid kvar: </p>
 
         <div id="caughtSheep"></div><br>
     </div>

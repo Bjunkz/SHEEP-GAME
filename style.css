@@ -12,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: rgb(252, 251, 251);
+    font-size: 20px;
 }
 .box {
     /* border: 1px solid #555; */
@@ -29,6 +30,14 @@ body {
     
 }
 
+.goat {
+    background-image: url(goat.jpg);
+    background-size: 150px;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+
 #caughtSheep {
     min-height: 100px;
     width: 400px;
@@ -37,4 +46,42 @@ body {
 
 img {
     width: 50px;
+}
+
+#janne {
+    width: 200px;
+    align-self: flex-end;
+}
+
+
+.header>* {
+    display: inline;
+    padding-top: 50px;
+}
+
+.buttons>* {
+    display: inline;
+}
+
+button {
+    padding: 10px;
+    background-color: rgba(85, 192, 85, 0.658);
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: rgb(85, 192, 85);
+
+}
+
+#stopBtn{
+    background-color: red;
+}
+#stopBtn:hover{
+    background-color: rgb(163, 13, 13);
+}
+
+.failGoat {
+    border: 3px solid red;
 }
