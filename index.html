@@ -9,13 +9,14 @@
 </head>
 <body>
     <h1>Jannes får-loop</h1>
-    <div id ="description">Kaos i Jannes grannes får-kollektiv. Hjälp Janne att fånga fåren. </div>
+    <div id ="description">Kaos i Jannes grannes får-kollektiv. Hjälp Janne att fånga 10 får. </div>
     <button id="startBtn">Starta</button>
-    <h2 id="score">Fångade får: 0</h2>
+    <div>
+        <p id="score">Fångade får: 0</p>
+        <p id="time">Tid kvar: 20</p>
 
-    
-    <h2 id="time">Tid kvar: 20</h2>
-
+        <div id="caughtSheep"></div><br>
+    </div>
     <div class="game-board">
         <div class="box" id="1"></div>
         <div class="box" id="2"></div>
@@ -28,7 +29,7 @@
         <div class="box" id="9"></div>
     </div>
 
-    <div id="caughtSheep"></div><br>
+
 
     <script src="script.js"></script>
 </body>

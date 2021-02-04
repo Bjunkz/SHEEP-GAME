@@ -32,16 +32,21 @@ function startGame() {
         if (timeLeft == 0) {
             clearInterval(timer);
             clearInterval(sheepCatcher);
-        
-
+            alert("Sorry, tiden är slut")
         };
+        
         time.innerHTML = "Tid kvar: " + timeLeft;
         console.log(timeLeft);
     }, 1000);
     
-    placeSheep()
+    placeSheep();
+    sheepCatcher = setInterval(placeSheep, level)
 
-        sheepCatcher = setInterval(placeSheep, level)
+    // if (currentScore == 3) {
+    //     clearInterval(timer);
+    //     clearInterval(sheepCatcher);
+    //     alert("grattis nästa nivå")
+    // };
 };
 
 // PLACERAR ETT FÅR I EN RANDOM BOX 
@@ -62,7 +67,7 @@ gameBoard.addEventListener('click', function (e) {
     
     if (e.target.classList.contains('sheep')) {
         currentScore++;
-        level-=80;
+        
         // varje gång man träffar ett får går det fortare, funkar dock först när man startar om
         // clearInterval(sheepCatcher); 
         // sheepCatcher = setInterval(placeSheep, level); fungerar inte, ta bort?
@@ -70,6 +75,14 @@ gameBoard.addEventListener('click', function (e) {
         score.innerHTML = "Fångade får: " + currentScore
         e.target.classList.remove('sheep')
         sheep.insertAdjacentHTML("beforeend", sheepImg);
+        console.log("currentScore", currentScore);
+
+        
+        if (currentScore === 3) {
+            alert("Grattis, du har klarat första nivån");
+            level-=80;
+        };
     };
 
 });
+
