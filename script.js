@@ -27,6 +27,8 @@ stopBtn.addEventListener('click', function(){
     timeLeft = 40
     time.innerHTML = "Tid kvar: " + timeLeft;
     currentScore = 0;
+    sheep.innerHTML= ""
+
 })
 
 //STARTAR SPELET OCH TIMERN
@@ -38,7 +40,6 @@ function startGame() {
         clearInterval(sheepCatcher);
     }
 
-    sheep.innerHTML= ""
 
     timer = setInterval(function () {
         timeLeft --
@@ -51,7 +52,6 @@ function startGame() {
         };
         
         time.innerHTML = "Tid kvar: " + timeLeft;
-        console.log(timeLeft);
     }, 1000);
     
     placeSheep();
@@ -79,8 +79,7 @@ function placeGoat (){
     let goatNumber = Math.random()
     let number = Math.floor(getRandomArbitrary(1, 9))
     let div = document.getElementById(number)
-    console.log(goatNumber);
-    if(goatNumber<0.9){
+    if(goatNumber<0.3){
         div.classList.add('goat')
 
     }
@@ -106,11 +105,9 @@ gameBoard.addEventListener('click', function (e) {
         // varje gång man träffar ett får går det fortare, funkar dock först när man startar om
         // clearInterval(sheepCatcher); 
         // sheepCatcher = setInterval(placeSheep, level); fungerar inte, ta bort?
-        console.log("level: ",level)
         score.innerHTML = "Fångade får: " + currentScore
         e.target.classList.remove('sheep')
         sheep.insertAdjacentHTML("beforeend", sheepImg);
-        console.log("currentScore", currentScore);
 
         
         if (currentScore === 5) {
@@ -135,9 +132,9 @@ gameBoard.addEventListener('click', function (e) {
         e.target.classList.remove('goat')
         e.target.classList.add('failGoat')
         let failGoat = setTimeout(function(){
-            console.log("timeout funkar");
             e.target.classList.remove('failGoat')
-        }, 200)
+
+    }, 200)
 
         
         
